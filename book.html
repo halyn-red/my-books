@@ -9,61 +9,104 @@
 <body>
 
 <!-- Back button -->
-<button id="back-button">← back</button>
+<button id="back-button" type="button">← back</button>
 
 <header>
-    <h1>Book Details</h1>
+    <h1>BOOK DETAILS</h1>
 </header>
 
+<div id="book-details">
 
-
-<!-- Main container: image on left, fields on right -->
-<div id="book-details" style="display:flex; align-items:flex-start; gap:20px; padding:20px; font-family:Courier New;">
-
-    <!-- Book cover placeholder -->
-    <div>
-        <img id="book-cover" src="https://via.placeholder.com/120x180?text=Cover" 
-             alt="Book Cover" style="width:120px; height:180px; object-fit:cover; border:1px solid #213e31;">
+    <!-- LEFT COLUMN: COVER ONLY -->
+    <div id="cover-column">
+        <img id="book-cover"
+             src="https://via.placeholder.com/120x180?text=Cover"
+             alt="Book Cover">
     </div>
 
-    <!-- Book fields -->
-    <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
-        <label>ISBN: <input id="book-isbn" type="text" placeholder="Enter ISBN"></label>
-        
-	<button type="button" id="fetch-book" style="width:20%;">Fetch Book Info</button>
+    <!-- RIGHT COLUMN: ALL FIELDS -->
+    <div id="fields-column">
 
-        <label>Title: <input id="book-title" type="text" style="width:100%;"></label>
-        <label>Author: <input id="book-author" type="text" style="width:100%;"></label>
-        <label>Published: <input id="book-published" type="text" style="width:100%;"></label>
-        <label>Page Count: <input id="book-pages" type="text" style="width:100%;"></label>
-        <label>Genre: <input id="book-genre" type="text" style="width:100%;"></label>
+        <!-- ISBN -->
+        <div class="field-row isbn-row">
+            <label for="book-isbn">ISBN:</label>
+            <input id="book-isbn" type="text" placeholder="Enter ISBN">
+            <button id="fetch-book" type="button">Get Info</button>
+        </div>
 
-        <!-- Yes/No read toggle -->
-        <label>Have you read? <button type="button" id="book-read" data-value="No">No</button></label>
+        <!-- Title -->
+        <div class="field-row">
+            <label for="book-title">title:</label>
+            <input id="book-title" type="text">
+        </div>
 
-        <!-- Date field -->
-        <label>Date Read: <input type="date" id="book-date"></label>
+        <!-- Author -->
+        <div class="field-row">
+            <label for="book-author">author:</label>
+            <input id="book-author" type="text">
+        </div>
+
+        <!-- Published -->
+        <div class="field-row">
+            <label for="book-published">published:</label>
+            <input id="book-published" type="date">
+        </div>
+
+        <!-- Date Read (added missing ID) -->
+        <div class="field-row">
+            <label for="book-date">date read:</label>
+            <input id="book-date" type="date">
+        </div>
+
+        <!-- Pages -->
+        <div class="field-row">
+            <label for="book-pages">pages:</label>
+            <input id="book-pages" type="number">
+        </div>
+
+        <!-- Genre -->
+        <div class="field-row">
+            <label for="book-genre">genre(s):</label>
+            <input id="book-genre" type="text">
+        </div>
+
+        <!-- Description -->
+        <div class="field-row">
+            <label>description:</label>
+            <textarea id="book-description" rows="4"></textarea>
+        </div>
+
+        <!-- Read toggle -->
+        <div class="field-row">
+            <label>have you read?</label>
+            <button id="book-read" type="button" data-value="No">No</button>
+        </div>
 
         <!-- Star rating -->
-        <label>Rating:</label>
-        <div id="star-rating" style="display:flex; gap:5px; cursor:pointer;">
-            <span data-value="1">☆</span>
-            <span data-value="2">☆</span>
-            <span data-value="3">☆</span>
-            <span data-value="4">☆</span>
-            <span data-value="5">☆</span>
+        <div class="field-row">
+            <label>rating:</label>
+            <div id="star-rating">
+                <span data-value="1">☆</span>
+                <span data-value="2">☆</span>
+                <span data-value="3">☆</span>
+                <span data-value="4">☆</span>
+                <span data-value="5">☆</span>
+            </div>
         </div>
 
         <!-- Comments -->
-        <label>Comments:<br>
-            <textarea id="book-comments" rows="4" style="width:100%;"></textarea>
-        </label>
+        <div class="field-row">
+            <label>your comments:</label>
+            <textarea id="book-comments" rows="4"></textarea>
+        </div>
 
-        <!-- Save changes button -->
-        <button id="save-book">Save Changes</button>
+        <!-- Save -->
+        <button id="save-book" type="button">Save Changes</button>
+
     </div>
 </div>
 
 <script src="book.js"></script>
+
 </body>
 </html>

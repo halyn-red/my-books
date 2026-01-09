@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"> <!-- ensures proper character encoding -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- makes responsive -->
-<title>My Book Library</title>
-<link rel="stylesheet" href="style.css"> <!-- link to CSS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>MY BOOKS</h1> <!-- Main header -->
-    <p>these are your books</p> <!-- Subheader -->
+    <h1>MY LIBRARY</h1>
 </header>
 
-<!-- Button to add a new dummy book -->
-<button id="scan-button">new book?</button>
+<!-- Scan / Add Book button (matches app.js) -->
+<button id="scan-button">+ Add Book</button>
 
-<!-- Container where all book cards will be dynamically inserted -->
+<!-- IMPORTANT: div, not ul -->
 <div id="book-list"></div>
 
-<!-- JS for index.html -->
 <script src="app.js"></script>
 </body>
 </html>

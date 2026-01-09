@@ -115,11 +115,16 @@ header p {
 /* -------------------- Book details page -------------------- */
 #book-details {
 display: flex;
-    flex-wrap: wrap;              /* wrap fields if screen is narrow */
     gap: 20px;
     padding: 20px;
     font-family: Courier New;
 }
+
+#cover-column {
+    flex-shrink: 0;
+}
+
+
 
 #book-details img {
     width: 120px;
@@ -127,6 +132,46 @@ display: flex;
     object-fit: cover;
     border: 1px solid #213e31;
 }
+
+
+
+#fields-column {
+    display: flex;
+    flex-direction: column;     /* fields go top → bottom */
+    gap: 12px;                  /* vertical spacing between rows */
+    flex: 1;                    /* take remaining horizontal space */
+}
+
+.field-row {
+    display: flex;              /* label and input on same line */
+    align-items: center;
+    gap: 10px;
+}
+
+.field-row label {
+    white-space: nowrap;
+}
+
+
+
+.field-row label {
+	white-space: no wrap;
+}
+
+.field-row input,
+.field-row textarea {
+    flex: 1;                    /* fill remaining space */
+    padding: 6px;
+    font-family: Courier New;
+    font-size: 16px;
+    border: 1px solid #213e31;
+    border-radius: 5px;
+}
+
+.field-row textarea {
+    resize: vertical;           /* allow up/down resizing only */
+}
+
 
 #book-details label {
     font-size: 24px;
