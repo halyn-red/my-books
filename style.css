@@ -74,6 +74,22 @@ header p {
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
+#book-read{
+    display: block;                 /* make button a block so margin auto works */
+    	padding: 10px 20px;
+	font-family: Courier New;       /* ensure button font matches page */
+    font-size: 18px;                /* button text size */
+    background-color: #213e31;      /* button color */
+    color: white;                   /* button text color */
+    border: none;                   /* remove default border */
+    border-radius: 8px;             /* rounded corners */
+    cursor: pointer;                /* cursor pointer */
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+
+
+
 #scan-button:hover, #fetch-book:hover, #save-book:hover, #back-button:hover {
     background-color: #71ae94;       /* hover color */
     transform: scale(1.05);          /* slight enlarge on hover */
@@ -91,10 +107,11 @@ header p {
 /* -------------------- Individual book cards -------------------- */
 .book-card {
     width: 150px;                /* fixed width */
-	height: 300px;
+    height: 300px;
+	font-size: 10px;
     text-align: center;          /* center content inside card */
     background-color: white;     /* card background */
-    border: 1px solid #213e31;  /* card border */
+    border: 1px solid #213e31;   /* card border */
     border-radius: 10px;         /* slightly rounded corners */
     padding: 5px;                /* inner spacing inside card */
     cursor: pointer;             /* pointer on hover to indicate click */
@@ -110,6 +127,21 @@ header p {
     height: 120px;               /* book cover height */
     object-fit: cover;           /* maintain aspect ratio and cover box */
     margin-bottom: 5px;          /* space below image */
+}
+
+.delete-book {
+    display: block;                 /* make button a block so margin auto works */
+	margin-top: 5px;
+	margin-left: 5px;    
+	padding: 5px 5px;             /* vertical and horizontal padding */
+    font-family: Courier New;       /* ensure button font matches page */
+    font-size: 12px;                /* button text size */
+    background-color: #213e31;      /* button color */
+    color: white;                   /* button text color */
+    border: none;                   /* remove default border */
+    border-radius: 8px;             /* rounded corners */
+    cursor: pointer;                /* cursor pointer */
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
 /* -------------------- Book details page -------------------- */
@@ -147,11 +179,6 @@ display: flex;
     align-items: center;
     gap: 10px;
 }
-
-.field-row label {
-    white-space: nowrap;
-}
-
 
 
 .field-row label {
@@ -194,14 +221,14 @@ display: flex;
 
 /* -------------------- Star rating -------------------- */
 #star-rating span {
-    font-size: 24px;
+    font-size: 75px;
     color: #213e31;              /* default gray */
     cursor: pointer;
     transition: color 0.2s;
 }
 
 #star-rating span.filled {
-    color: gold;              /* filled stars */
+    color: gold;              /* filled stars, does nothing */
 }
 
 /* -------------------- Responsive tweaks -------------------- */
