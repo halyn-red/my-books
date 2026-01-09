@@ -1,0 +1,175 @@
+/* -------------------- Body styling -------------------- */
+body {
+    font-family: Courier New;     /* All text uses Courier New */
+    margin: 0;                    /* remove default body margin */
+    padding: 0;                   /* remove default body padding */
+    background-color: #d0d0ca;   /* page background color */
+    color: #213e31;               /* default text color */
+}
+
+/* -------------------- Header styling -------------------- */
+header {
+    text-align: center;           /* center all header content */
+    font-size: 50px;              /* base font size (overridden by h1/p) */
+}
+
+header h1 {
+    color: #213e31;               /* header color */
+    font-size: 50px;              /* first line font size */
+    margin-top: 40px;             /* space from top of page */
+    margin-bottom: 0px;           /* no space below first line */
+    line-height: 1;               /* tight line spacing */
+}
+
+header p {
+    color: #213e31;               /* second line color */
+    font-size: 36px;              /* second line font size */
+    margin-top: 0px;              /* remove default spacing above paragraph */
+    line-height: 1;               /* tight spacing */
+}
+
+/* -------------------- Scan/New Book Button -------------------- */
+#scan-button, #save-book {
+    display: block;                 /* make button a block so margin auto works */
+    margin: 10px auto;              /* centered horizontally with top/bottom spacing */
+    padding: 10px 20px;             /* vertical and horizontal padding */
+    font-family: Courier New;       /* ensure button font matches page */
+    font-size: 18px;                /* button text size */
+    background-color: #213e31;      /* button color */
+    color: white;                   /* button text color */
+    border: none;                   /* remove default border */
+    border-radius: 8px;             /* rounded corners */
+    cursor: pointer;                /* cursor pointer */
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+#fetch-book {
+    display: block;                 /* make button a block so margin auto works */
+    margin-left: 10px;              /* centered horizontally with top/bottom spacing */
+    padding: 10px 20px;             /* vertical and horizontal padding */
+    font-family: Courier New;       /* ensure button font matches page */
+    font-size: 18px;                /* button text size */
+    background-color: #213e31;      /* button color */
+    color: white;                   /* button text color */
+    border: none;                   /* remove default border */
+    border-radius: 8px;             /* rounded corners */
+    cursor: pointer;                /* cursor pointer */
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+
+
+#back-button {
+    display: block;                 /* make button a block so margin auto works */
+	margin-top: 15px;
+	margin-left: 20px;    
+	padding: 10px 20px;             /* vertical and horizontal padding */
+    font-family: Courier New;       /* ensure button font matches page */
+    font-size: 18px;                /* button text size */
+    background-color: #213e31;      /* button color */
+    color: white;                   /* button text color */
+    border: none;                   /* remove default border */
+    border-radius: 8px;             /* rounded corners */
+    cursor: pointer;                /* cursor pointer */
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+#scan-button:hover, #fetch-book:hover, #save-book:hover, #back-button:hover {
+    background-color: #71ae94;       /* hover color */
+    transform: scale(1.05);          /* slight enlarge on hover */
+}
+
+/* -------------------- Book list container -------------------- */
+#book-list {
+    display: flex;               /* arrange cards in a row */
+    flex-wrap: wrap;             /* wrap to next line if needed */
+    gap: 15px;                   /* space between cards, tighter for chic look */
+    justify-content: center;     /* center cards horizontally */
+    padding: 10px;               /* small padding around list */
+}
+
+/* -------------------- Individual book cards -------------------- */
+.book-card {
+    width: 150px;                /* fixed width */
+	height: 300px;
+    text-align: center;          /* center content inside card */
+    background-color: white;     /* card background */
+    border: 1px solid #213e31;  /* card border */
+    border-radius: 10px;         /* slightly rounded corners */
+    padding: 5px;                /* inner spacing inside card */
+    cursor: pointer;             /* pointer on hover to indicate click */
+    transition: transform 0.2s;  /* smooth hover effect */
+}
+
+.book-card:hover {
+    transform: scale(1.05);      /* slight enlarge on hover */
+}
+
+.book-card img {
+    width: 80px;                 /* book cover width */
+    height: 120px;               /* book cover height */
+    object-fit: cover;           /* maintain aspect ratio and cover box */
+    margin-bottom: 5px;          /* space below image */
+}
+
+/* -------------------- Book details page -------------------- */
+#book-details {
+display: flex;
+    flex-wrap: wrap;              /* wrap fields if screen is narrow */
+    gap: 20px;
+    padding: 20px;
+    font-family: Courier New;
+}
+
+#book-details img {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid #213e31;
+}
+
+#book-details label {
+    font-size: 24px;
+    color: #213e31;
+}
+
+/* Make inputs full width with padding */
+#book-details input[type="text"],
+#book-details input[type="date"],
+#book-details input[type="number"],
+#book-details textarea {
+    width: 100%;
+    padding: 5px;
+    font-family: Courier New;
+    font-size: 16px;
+    border: 1px solid #213e31;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* -------------------- Star rating -------------------- */
+#star-rating span {
+    font-size: 24px;
+    color: #213e31;              /* default gray */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#star-rating span.filled {
+    color: gold;              /* filled stars */
+}
+
+/* -------------------- Responsive tweaks -------------------- */
+@media (max-width: 600px) {
+    #book-details {
+        flex-direction: column;
+        align-items: center;
+    }
+    .book-card {
+        width: 120px;
+    }
+    .book-card img {
+        width: 60px;
+        height: 90px;
+    }
+}

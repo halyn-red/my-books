@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Back button -->
+<button id="back-button">← back</button>
+
+<header>
+    <h1>Book Details</h1>
+</header>
+
+
+
+<!-- Main container: image on left, fields on right -->
+<div id="book-details" style="display:flex; align-items:flex-start; gap:20px; padding:20px; font-family:Courier New;">
+
+    <!-- Book cover placeholder -->
+    <div>
+        <img id="book-cover" src="https://via.placeholder.com/120x180?text=Cover" 
+             alt="Book Cover" style="width:120px; height:180px; object-fit:cover; border:1px solid #213e31;">
+    </div>
+
+    <!-- Book fields -->
+    <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+        <label>ISBN: <input id="book-isbn" type="text" placeholder="Enter ISBN"></label>
+        
+	<button type="button" id="fetch-book" style="width:20%;">Fetch Book Info</button>
+
+        <label>Title: <input id="book-title" type="text" style="width:100%;"></label>
+        <label>Author: <input id="book-author" type="text" style="width:100%;"></label>
+        <label>Published: <input id="book-published" type="text" style="width:100%;"></label>
+        <label>Page Count: <input id="book-pages" type="text" style="width:100%;"></label>
+        <label>Genre: <input id="book-genre" type="text" style="width:100%;"></label>
+
+        <!-- Yes/No read toggle -->
+        <label>Have you read? <button type="button" id="book-read" data-value="No">No</button></label>
+
+        <!-- Date field -->
+        <label>Date Read: <input type="date" id="book-date"></label>
+
+        <!-- Star rating -->
+        <label>Rating:</label>
+        <div id="star-rating" style="display:flex; gap:5px; cursor:pointer;">
+            <span data-value="1">☆</span>
+            <span data-value="2">☆</span>
+            <span data-value="3">☆</span>
+            <span data-value="4">☆</span>
+            <span data-value="5">☆</span>
+        </div>
+
+        <!-- Comments -->
+        <label>Comments:<br>
+            <textarea id="book-comments" rows="4" style="width:100%;"></textarea>
+        </label>
+
+        <!-- Save changes button -->
+        <button id="save-book">Save Changes</button>
+    </div>
+</div>
+
+<script src="book.js"></script>
+</body>
+</html>
