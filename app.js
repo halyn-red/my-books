@@ -2,38 +2,38 @@
 const bookList = document.getElementById("book-list");
 const scanButton = document.getElementById("scan-button");
 
-// --- LOAD LIBRARY ---
+// --- LOAD LIBRARY FROM LOCAL STORAGE ---
 let library = JSON.parse(localStorage.getItem("myLibrary")) || [];
-
-// Preload 25 dummy books if empty
-if (library.length === 0) {
-    for (let i = 1; i <= 25; i++) {
-        library.push({
-            id: i,
-            title: `Book ${i}`,
-            author: `Author ${i}`,
-            cover: "https://via.placeholder.com/100x150?text=Cover"
-        });
-    }
-    localStorage.setItem("myLibrary", JSON.stringify(library));
-}
 
 // --- RENDER LIBRARY ---
 function renderLibrary() {
-    bookList.innerHTML = ""; // clear existing
+    bookList.innerHTML = ""; // clear existing cards
+
     library.forEach(book => {
         const card = document.createElement("div");
         card.className = "book-card";
         card.innerHTML = `
+            <button class="delete-book" title="Delete Book">×</button>
             <img src="${book.cover}" alt="Book Cover">
             <h2>${book.title}</h2>
             <p>${book.author}</p>
         `;
 
-        // Click card → open book.html
-        card.addEventListener("click", () => {
+        // Card click → open book.html (skip delete button)
+        card.addEventListener("click", (e) => {
+            if (e.target.classList.contains("delete-book")) return;
             localStorage.setItem("selectedBookId", book.id);
             window.location.href = "book.html";
+        });
+
+        // Delete book
+        card.querySelector(".delete-book").addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (confirm(`Delete "${book.title}"?`)) {
+                library = library.filter(b => b.id !== book.id);
+                localStorage.setItem("myLibrary", JSON.stringify(library));
+                renderLibrary();
+            }
         });
 
         bookList.appendChild(card);
@@ -43,12 +43,12 @@ function renderLibrary() {
 // --- ADD NEW BOOK ---
 function addNewBook() {
     const newBook = {
-        id: library.length + 1,
-        title: `New Book ${library.length + 1}`,
-        author: "Author Name",
+        id: Date.now(),
+        title: "New Book",
+        author: "",
         cover: "https://via.placeholder.com/100x150?text=Cover"
     };
-    library.push(newBook);
+    library.unshift(newBook); // newest book first
     localStorage.setItem("myLibrary", JSON.stringify(library));
     renderLibrary();
 }
