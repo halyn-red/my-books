@@ -28,7 +28,33 @@ header p {
     line-height: 1;               /* tight spacing */
 }
 
-/* -------------------- Scan/New Book Button -------------------- */
+/*--------FILTERS FRICKIN AROUND--------*/
+.filters{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	width: 100%;
+	margin-left: 20px;
+	clear: both;
+	gap: 15px;
+}
+
+.filter-dropdown{
+height: 40px;
+padding: 10px 10px;             /* vertical and horizontal padding */
+    	font-family: Courier New;       /* ensure button font matches page */
+	font-size: 18px;                /* button text size */
+    	background-color: #213e31;      /* button color */
+   	 color: white;                   /* button text color */
+   	 border: none;                   /* remove default border */
+   	 border-radius: 8px;             /* rounded corners */
+   	 cursor: pointer;                /* cursor pointer */
+   	 transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+
+
+/* -------------------- add Book Button -------------------- */
 #scan-button, #save-book {
     display: block;                 /* make button a block so margin auto works */
     margin: 10px auto;              /* centered horizontally with top/bottom spacing */
