@@ -1,35 +1,35 @@
-/* -------------------- Body styling -------------------- */
+/* the page itself, over-arching/background */
 body {
-    font-family: Courier New;     /* All text uses Courier New */
-    margin: 0;                    /* remove default body margin */
-    padding: 0;                   /* remove default body padding */
-    background-color: #d0d0ca;   /* page background color */
-    color: #213e31;               /* default text color */
+    font-family: Courier New;     /* All  uses Courier New */
+    margin: 0;                    
+    padding: 0;                  
+    background-color: #d0d0ca;   /* page background  */
+    color: #213e31;               /* default text  */
 }
 
-/* -------------------- Header styling -------------------- */
-header {
+/*header, this is my library */
+header { 
     text-align: center;           /* center all header content */
-    font-size: 50px;              /* base font size (overridden by h1/p) */
+    font-size: 50px;              /* base font size (unless you override it) */
 }
 
-header h1 {
-    color: #213e31;               /* header color */
-    font-size: 50px;              /* first line font size */
-    margin-top: 40px;             /* space from top of page */
-    margin-bottom: 0px;           /* no space below first line */
-    line-height: 1;               /* tight line spacing */
+header h1 { /* this is MY LIBRARY and h1 is the only thing in header */
+    color: #213e31;               
+    font-size: 50px;             
+    margin-top: 40px;             
+    margin-bottom: 0px;          
+    line-height: 1;              
 }
 
-header p {
-    color: #213e31;               /* second line color */
-    font-size: 36px;              /* second line font size */
-    margin-top: 0px;              /* remove default spacing above paragraph */
-    line-height: 1;               /* tight spacing */
+header p { /* this doesn't exist so idk why it's here??? maybe old from before */
+    color: #213e31;               
+    font-size: 36px;              
+    margin-top: 0px;              
+    line-height: 1;              
 }
 
 /*--------FILTERS FRICKIN AROUND--------*/
-.filters{
+.filters{ /* this is like the row of filters */
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: flex-start;
@@ -39,77 +39,76 @@ header p {
 	gap: 15px;
 }
 
-.filter-dropdown{
+.filter-dropdown{ /* this is the dropdown itself and the button */
 height: 40px;
-padding: 10px 10px;             /* vertical and horizontal padding */
-    	font-family: Courier New;       /* ensure button font matches page */
-	font-size: 18px;                /* button text size */
-    	background-color: #213e31;      /* button color */
-   	 color: white;                   /* button text color */
-   	 border: none;                   /* remove default border */
-   	 border-radius: 8px;             /* rounded corners */
-   	 cursor: pointer;                /* cursor pointer */
-   	 transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+padding: 10px 10px;             
+    	font-family: Courier New;       
+	font-size: 18px;                
+    	background-color: #213e31;      
+   	 color: white;                   
+   	 border: none;                   
+   	 border-radius: 8px;           
+   	 cursor: pointer;                
+   	 transition: background-color 0.2s, transform 0.2s; /* smooth hover, thanks chatgpt */
 }
 
-
-
-/* -------------------- add Book Button -------------------- */
+/* adding a new book button, it was scan at first but now it's new and too much to change */
 #scan-button, #save-book {
-    display: block;                 /* make button a block so margin auto works */
+    display: block;                 
     margin: 10px auto;              /* centered horizontally with top/bottom spacing */
-    padding: 10px 20px;             /* vertical and horizontal padding */
-    font-family: Courier New;       /* ensure button font matches page */
-    font-size: 18px;                /* button text size */
-    background-color: #213e31;      /* button color */
-    color: white;                   /* button text color */
-    border: none;                   /* remove default border */
-    border-radius: 8px;             /* rounded corners */
-    cursor: pointer;                /* cursor pointer */
+    padding: 10px 20px;             
+    font-family: Courier New;      
+    font-size: 18px;                
+    background-color: #213e31;     
+    color: white;                   
+    border: none;                   
+    border-radius: 8px;             
+    cursor: pointer;              
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
+/* this is "get info" now */
 #fetch-book {
-    display: block;                 /* make button a block so margin auto works */
-    margin-left: 10px;              /* centered horizontally with top/bottom spacing */
-    padding: 10px 20px;             /* vertical and horizontal padding */
-    font-family: Courier New;       /* ensure button font matches page */
-    font-size: 18px;                /* button text size */
-    background-color: #213e31;      /* button color */
-    color: white;                   /* button text color */
-    border: none;                   /* remove default border */
-    border-radius: 8px;             /* rounded corners */
-    cursor: pointer;                /* cursor pointer */
+    display: block;                 
+    margin-left: 10px;              
+    padding: 10px 20px;             
+    font-family: Courier New;       
+    font-size: 18px;                
+    background-color: #213e31;      
+    color: white;                   
+    border: none;                   
+    border-radius: 8px;             
+    cursor: pointer;                
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
-
-
+/* you made the back button also the save button */
 #back-button {
-    display: block;                 /* make button a block so margin auto works */
+    display: block;                 
 	margin-top: 15px;
 	margin-left: 20px;    
-	padding: 10px 20px;             /* vertical and horizontal padding */
-    font-family: Courier New;       /* ensure button font matches page */
-    font-size: 18px;                /* button text size */
-    background-color: #213e31;      /* button color */
-    color: white;                   /* button text color */
-    border: none;                   /* remove default border */
-    border-radius: 8px;             /* rounded corners */
-    cursor: pointer;                /* cursor pointer */
+	padding: 10px 20px;             
+    font-family: Courier New;       
+    font-size: 18px;                
+    background-color: #213e31;      
+    color: white;                   
+    border: none;                   
+    border-radius: 8px;             
+    cursor: pointer;                
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
+/* this is the yes/no button on the book.html*/
 #book-read{
-    display: block;                 /* make button a block so margin auto works */
+    display: block;                
     	padding: 10px 20px;
-	font-family: Courier New;       /* ensure button font matches page */
-    font-size: 18px;                /* button text size */
-    background-color: #213e31;      /* button color */
-    color: white;                   /* button text color */
-    border: none;                   /* remove default border */
-    border-radius: 8px;             /* rounded corners */
-    cursor: pointer;                /* cursor pointer */
+	font-family: Courier New;       
+    font-size: 18px;              
+    background-color: #213e31;     
+    color: white;                  
+    border: none;               
+    border-radius: 8px;             
+    cursor: pointer;                
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
