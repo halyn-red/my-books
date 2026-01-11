@@ -17,7 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- BACK BUTTON ---
     backButton.addEventListener("click", () => {
-        window.location.href = "index.html";
+	book.title = titleInput.value;
+        book.author = authorInput.value;
+        book.published = publishedInput.value;
+        book.pages = pagesInput.value;
+        book.genre = genreInput.value
+		.split(",")
+		.map (g => g.trim())
+		.filter(Boolean)
+		.join(", ");
+        book.read = readButton.dataset.value === "Yes";
+        book.rating = rating;
+        book.comments = commentsInput.value;
+        book.cover = coverImage.src;
+        book.description = descriptionInput.value;
+
+        localStorage.setItem("myLibrary", JSON.stringify(library));
+        //alert("Book updated!");
+	window.location.href="index.html";        
     });
 
     // --- LOAD SELECTED BOOK ---
@@ -34,8 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     genreInput.value = book.genre || "";
     descriptionInput.value = book.description || "";
     commentsInput.value = book.comments || "";
-    readButton.textContent = book.read || "No";
-    readButton.dataset.value = book.read || "No";
+	readButton.dataset.value = book.read ? "Yes" : "No";
+	readButton.textContent = book.read ? "Yes" : "No";
+    
+	//readButton.textContent = book.read || "No";
+    	//readButton.dataset.value = book.read || "No";
 
     // --- YES/NO TOGGLE ---
     readButton.addEventListener("click", () => {
@@ -63,23 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- SAVE BUTTON ---
-    saveButton.addEventListener("click", () => {
-        book.title = titleInput.value;
-        book.author = authorInput.value;
-        book.published = publishedInput.value;
-        book.pages = pagesInput.value;
-        book.genre = genreInput.value;
-        book.read = readButton.dataset.value;
-        book.rating = rating;
-        book.comments = commentsInput.value;
-        book.cover = coverImage.src;
-        book.description = descriptionInput.value;
-
-        localStorage.setItem("myLibrary", JSON.stringify(library));
-        alert("Book updated!");
-    });
-
+    
     // --- FETCH BOOK INFO BY ISBN ---
     fetchButton.addEventListener("click", async () => {
         const isbn = isbnInput.value.trim();
@@ -102,9 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
             pagesInput.value = volume.pageCount || "";
             genreInput.value = (volume.categories || []).join(", ");
             descriptionInput.value = volume.description || "";
-            coverImage.src = (volume.imageLinks && volume.imageLinks.thumbnail) || "https://via.placeholder.com/120x180?text=Cover";
+            coverImage.src = (volume.imageLinks && volume.imageLinks.thumbnail) || "https://			via.placeholder.com/120x180?text=Cover";
 
-            alert("Book info loaded!");
         } catch (error) {
             console.error(error);
             alert("Error fetching book data");
