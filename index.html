@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Library</title>
 <link rel="stylesheet" href="style.css">
+<head>
 <body>
 
 <header>
@@ -12,7 +13,27 @@
 </header>
 
 <!-- Scan / Add Book button (matches app.js) -->
-<button id="scan-button">+ Add Book</button>
+<button id="scan-button">+ add book</button>
+
+
+<div class="filters">
+
+<button id="clear-filters" class="filter-dropdown">clear</button>
+
+
+<select id="read-filter" class="filter-dropdown">
+  <option value="all">have you read?</option>
+  <option value="read">read</option>
+  <option value="unread">unread</option>
+</select>
+
+<select id="genre-filter" class="filter-dropdown">
+	<option value="all">all genres</option>
+</select>
+
+</div>
+
+
 
 
 
