@@ -1,212 +1,127 @@
-# my-books
+BOOK LIBRARY PROJECT – COPY/PASTE-FRIENDLY SUMMARY
 
-<p>
-  index.html – main library page
+Files and Roles
+index.html: HTML: Main library page showing books, add button, filters, dynamic book cards
+book.html: HTML: Book details page with editable fields, read toggle, star rating, fetch ISBN
+style.css: CSS: Styles both pages including layout, buttons, cards, filters, responsive tweaks
+app.js: JS: Library page logic, load/save localStorage, render cards, add/delete books, filters
+book.js: JS: Book details logic, load selected book, populate fields, toggle read, set rating, fetch API
 
-book.html – individual book details page
+index.html Elements
+header: Header container for page title
+h1: Header text "MY LIBRARY"
+button: scan-button: Add new book
+div: filters: Wraps filter buttons/dropdowns
+button: clear-filters/filter-dropdown: Clears all filters
+select: read-filter/filter-dropdown: Filter by read/unread
+select: genre-filter/filter-dropdown: Filter by genre
+div: book-list: Container for dynamically rendered book cards
 
-style.css – styles for both pages
+book.html Elements
+button: back-button: Save book info & return to library
+h1: Header text "BOOK DETAILS"
+div: book-details: Container for cover and fields columns
+div: cover-column: Left column holding book cover image
+img: book-cover: Displays book cover (placeholder default)
+div: fields-column: Right column holding all input fields
+div: field-row: Wrapper for each label + input/textarea
+input: book-isbn: Enter ISBN to fetch book info
+button: fetch-book: Trigger API fetch by ISBN
+input: book-title: Book title
+input: book-author: Book author
+input: book-published: Published date
+input: book-pages: Number of pages
+input: book-genre: Book genres
+textarea: book-description: Book description
+button: book-read: Toggle read Yes/No
+div: star-rating: Container for 5 clickable stars
+textarea: book-comments: User comments
+button: save-book (commented out): Save changes
 
-app.js – library page logic
+CSS Classes / IDs
+body: Global font Courier New, background #d0d0ca, text color #213e31, no margin/padding
+header: Center text, font size 50px
+header h1: Color #213e31, margin-top 40px, line-height 1
+.filters: Flex container for filter buttons, gap 15px, margin-left 20px
+.filter-dropdown: Buttons/dropdowns, bg #213e31, text white, border-radius 8px, hover scale/hover color
+#scan-button/#save-book/#fetch-book/#back-button/#book-read: Styled buttons, hover color #71ae94, scale 1.05
+#book-list: Flex container for book cards, wraps, gap 15px, center aligned
+.book-card: Width 150px, height 300px, white background, border-radius 10px, hover scale 1.05
+.book-card img: Width 80px, height 120px, object-fit cover
+.delete-book: Small delete button on card
+#book-details: Flex container for cover + fields columns, gap 20px, padding 20px
+#cover-column: Flex-shrink 0
+#fields-column: Flex column, gap 12px
+.field-row: Flex row for label + input/textarea, gap 10px
+.field-row label: No-wrap
+.field-row input/textarea: Flex 1, padding 5-6px, border 1px solid #213e31, border-radius 5px
+#star-rating span: Font-size 75px, pointer cursor, gold if filled
+@media max-width 600px: Stack book-details vertically, resize cards and images
 
-book.js – book details page logic
+app.js Variables / Elements
+bookList: DOM element #book-list
+scanButton: DOM element #scan-button
+library: Array from localStorage, holds all books
+filters: Object {read: "all", genre: "all"}
+readFilter: DOM element #read-filter
+genreFilter: DOM element #genre-filter
+clearFiltersButton: DOM element #clear-filters
 
+app.js Functions
+applyFilters(): Filters library array based on filters, calls renderLibrary()
+populateGenreFilter(): Generates genre dropdown options from library
+renderLibrary(bookArray): Clears #book-list, renders book cards, adds click events for navigation & delete
+addNewBook(): Creates new book object, adds to library, updates localStorage, repopulates genres, applies filters
 
-MASTER OVERVIEW OF BOOK LIBRARY PROJECT
-1. File Roles Overview
-File	Type	Role / Purpose
-index.html	HTML	Main library page showing all books, with filters and “add book” button.
-book.html	HTML	Book details page; allows editing of book info, read status, rating, and comments.
-style.css	CSS	Styles both pages: layout, colors, buttons, book cards, star ratings, responsive tweaks.
-app.js	JS	Library page logic: load/save library, render book cards, filter books, add/delete books, handle localStorage.
-book.js	JS	Book details page logic: load selected book, populate fields, save edits, toggle read, set rating, fetch from Google Books API by ISBN.
-2. HTML Structure & Elements
-2a. index.html Elements
-Element	ID/Class	Type	Purpose
-<header>	—	Header	Page title "MY LIBRARY".
-<h1>	—	Header	Main title text.
-<button>	scan-button	Button	Add new book; triggers JS.
-<div>	filters	Container	Wraps filter dropdowns & clear button.
-<button>	clear-filters / filter-dropdown	Button	Clears all filters.
-<select>	read-filter / filter-dropdown	Dropdown	Filter by read/unread.
-<select>	genre-filter / filter-dropdown	Dropdown	Filter by genre.
-<div>	book-list	Container	Holds dynamically generated book cards.
-2b. book.html Elements
-Element	ID/Class	Type	Purpose
-<button>	back-button	Button	Save book info & return to index.html.
-<h1>	—	Header	Page title "BOOK DETAILS".
-<div>	book-details	Container	Wraps cover column and fields column.
-<div>	cover-column	Container	Left column, holds book cover image.
-<img>	book-cover	Image	Displays book cover; placeholder by default.
-<div>	fields-column	Container	Right column holding all input fields.
-<div>	field-row	Container	Row wrapper for each input/label field.
-<input>	book-isbn	Text	Input ISBN to fetch info from API.
-<button>	fetch-book	Button	Trigger API fetch by ISBN.
-<input>	book-title	Text	Book title.
-<input>	book-author	Text	Book author.
-<input>	book-published	Text	Published date.
-<input>	book-pages	Number	Number of pages.
-<input>	book-genre	Text	Genre(s).
-<textarea>	book-description	Textarea	Book description.
-<button>	book-read	Button	Toggle read status Yes/No.
-<div>	star-rating	Container	Clickable stars for rating.
-<textarea>	book-comments	Textarea	User comments.
-<button>	save-book (commented)	Button	Save changes (currently unused).
-3. CSS Key Classes / IDs & Styling Purpose
-Selector	Purpose / Notes
-body	Global font, background, text color, margin/padding reset.
-header / header h1	Centered title, font sizes, spacing.
-.filters	Flex container for filter buttons and dropdowns.
-.filter-dropdown	Styled buttons/selects with hover effect.
-#scan-button, #save-book, #fetch-book, #back-button, #book-read	Styled buttons with hover and rounded corners.
-#book-list	Flex container for book cards, wraps, centered.
-.book-card	Individual book card: width, height, padding, border, hover effect.
-.book-card img	Cover image sizing, object-fit.
-.delete-book	Small delete button on book card.
-#book-details	Flex container for cover + fields column.
-#fields-column	Flex column layout, spacing between rows.
-.field-row	Flex row for label + input/textarea.
-#star-rating span	Large clickable stars; gold for filled, pointer cursor.
-@media (max-width:600px)	Responsive tweaks: stack book details vertically, resize cards.
-4. JS Analysis
-4a. app.js (Library page)
+app.js Event Listeners
+scanButton click: Calls addNewBook()
+readFilter change: Updates filters.read & applies filters
+genreFilter change: Updates filters.genre & applies filters
+clearFiltersButton click: Resets filters & reapplies
+book-card click: Navigates to book.html with selectedBookId unless delete button clicked
+delete-book click: Deletes book from library & re-renders
 
-Variables & Elements
+book.js Variables / Elements
+backButton: DOM element #back-button
+isbnInput: DOM element #book-isbn
+fetchButton: DOM element #fetch-book
+titleInput: DOM element #book-title
+authorInput: DOM element #book-author
+publishedInput: DOM element #book-published
+pagesInput: DOM element #book-pages
+genreInput: DOM element #book-genre
+coverImage: DOM element #book-cover
+readButton: DOM element #book-read
+starContainer: DOM element #star-rating
+commentsInput: DOM element #book-comments
+descriptionInput: DOM element #book-description
+rating: Number, current star rating
+library: Array from localStorage
+book: Object, selected book
 
-Name	Type	Purpose
-bookList	DOM element	Container for book cards.
-scanButton	DOM element	Trigger to add new book.
-library	Array	Loaded from localStorage; holds all books.
-filters	Object	Active filter state: read and genre.
-readFilter	DOM element	Dropdown to filter read/unread.
-genreFilter	DOM element	Dropdown to filter by genre.
-clearFiltersButton	DOM element	Button to reset filters.
+book.js Functions / Actions
+renderStars(): Updates star icons based on rating
+backButton click: Saves all fields to library & localStorage, returns to index.html
+readButton click: Toggles Yes/No read status
+starContainer > span click: Sets rating & updates stars
+fetchButton click: Fetches book info by ISBN from Google Books API & populates fields
 
-Key Functions
+Execution Flow / Interactions
+index.html loads → app.js loads library from localStorage → populateGenreFilter() → applyFilters() → renderLibrary()
+User clicks + add book → addNewBook() → updates library & renders new card
+User clicks book card → save selectedBookId → navigate to book.html
+book.html loads → book.js retrieves selected book → populate fields
+User edits fields, toggles read, sets rating, optionally fetches ISBN → clicks backButton → saves to localStorage → return to index.html
+index.html reloads library → filtered and updated library displayed
+Filters on index.html allow narrowing books by read status or genre
 
-Function	Purpose
-applyFilters()	Filters library array based on filters and calls renderLibrary().
-populateGenreFilter()	Generates genre options from current library.
-renderLibrary(bookArray)	Clears bookList and renders HTML cards for each book. Adds click events for navigation & delete.
-addNewBook()	Creates new book object, adds to library, updates localStorage, repopulates filters, applies filters.
+Recommendations
+Fix index.html duplicate <head> tags
+Uncomment save-book button in book.html if desired
+Validate inputs (ISBN, pages, date)
+Reduce repeated button styling in CSS using shared class
+Fix cover placeholder link in book.js API fallback
+Consider adding rating or author filters in app.js
 
-Event Listeners
-
-Element	Event	Action
-scanButton	click	Adds new book via addNewBook().
-readFilter	change	Updates filters.read & applies filters.
-genreFilter	change	Updates filters.genre & applies filters.
-clearFiltersButton	click	Resets filters & reapplies.
-.book-card	click	Navigates to book.html with selected book ID, unless delete button clicked.
-.delete-book	click	Deletes the book from library & re-renders.
-
-Step-by-Step Execution
-
-Load page → library loaded from localStorage.
-
-Ensure defaults for read & genre.
-
-populateGenreFilter() fills dropdown with genres.
-
-applyFilters() filters library and renders cards.
-
-User actions (add book, filter, delete, click card) update library and UI dynamically.
-
-4b. book.js (Book details page)
-
-Variables & Elements
-
-Name	Type	Purpose
-backButton	DOM element	Save changes & return to index.html.
-isbnInput, fetchButton	DOM elements	Fetch book info via Google Books API.
-titleInput, authorInput, publishedInput, pagesInput, genreInput, descriptionInput, commentsInput	DOM elements	Editable book fields.
-coverImage	DOM element	Book cover image.
-readButton	DOM element	Toggle read status Yes/No.
-starContainer	DOM element	Container for 5 stars.
-rating	Number	Current star rating.
-library	Array	Loaded from localStorage.
-book	Object	Currently selected book.
-
-Key Functions
-
-Function	Purpose
-renderStars()	Updates star icons based on rating.
-fetchButton click	Calls Google Books API using ISBN; populates fields with results.
-
-Event Listeners
-
-Element	Event	Action
-backButton	click	Saves all fields back to library & localStorage; returns to index.html.
-readButton	click	Toggles Yes/No and updates dataset.value & text.
-starContainer > span	click	Updates rating and calls renderStars().
-fetchButton	click	Fetches book info by ISBN, populates inputs.
-
-Step-by-Step Execution
-
-Page loads → DOMContentLoaded.
-
-library loaded from localStorage; selected book retrieved by selectedBookId.
-
-Fields populated with book data.
-
-User edits fields, toggles read, sets rating, or fetches via ISBN.
-
-Clicking back button saves changes and returns to index.html.
-
-5. How Files Interact
-
-Overall Flow
-
-User opens index.html.
-
-app.js loads library → renders cards in book-list.
-
-User clicks + add book → new book added, re-rendered.
-
-User clicks book card → selectedBookId saved in localStorage → navigates to book.html.
-
-book.js loads selected book → populates fields.
-
-User edits fields, toggles read, sets rating, optionally fetches ISBN → clicks back.
-
-Changes saved to library in localStorage → return to index.html → updated library displayed.
-
-Filters in index.html allow narrowing books by read status or genre.
-
-6. Beginner-Friendly Analogies
-
-HTML = skeleton/structure.
-
-CSS = clothes & makeup → make the skeleton look nice.
-
-JS = nervous system → makes skeleton move: add books, filter, click cards.
-
-localStorage = memory → remembers your library between page reloads.
-
-Filters = digital sorting system.
-
-star rating = interactive rating meter.
-
-Google Books API = external assistant that fills in book details automatically.
-
-7. Recommendations
-
-Fix minor HTML issues: index.html has duplicate <head> tags.
-
-Uncomment save-book button in book.html if you want a dedicated save instead of back button.
-
-Consider validating input fields (ISBN, pages, date) for better UX.
-
-CSS: maybe reduce repeated button styling by using a shared class like .main-button.
-
-JS: in book.js, update cover placeholder link (currently broken) for API fallback.
-
-Optional: add rating filter or author filter in app.js for future improvements.
-
-Concise takeaway:
-
-This project is a two-page book library system. index.html lists books and manages filtering; book.html allows editing and fetching info. Both pages use CSS for consistent styling, and JS handles storage, rendering, filtering, API fetching, and interactivity. LocalStorage ensures persistence. Buttons, filters, and star ratings make the app interactive and user-friendly.
-
-
-  
-</p>
+Concise Takeaway
+Two-page book library system. index.html lists books with add, delete, filter features. book.html edits individual books, toggles read, sets star rating, fetches info via API. CSS ensures consistent styling. JS handles data storage, rendering, filtering, interactivity. LocalStorage persists data between pages.
