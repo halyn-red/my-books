@@ -23,4 +23,8 @@ MY LIBRARY
 2. Look into subjects which are nested below categories in the API.
 3. You need a duplicate check.
 4. Want the ISBN showed somewhere once entered in case you want to refresh.
+
+## Progress
+- Pre Jan 10th: library loads, can add book by ISBN, add book button adds a card to the front, card populated with what I want, can edit details and save/back, can set star rating, can change yes/no button on read,
+- January 10th: filter for read/not and genre (including user-added) and a clear all filters button
    
