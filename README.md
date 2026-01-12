@@ -2,9 +2,7 @@
 
 MY LIBRARY
 
-## Description
-
-The goal of this tool is provide a means to 
+## Goals
 1. add a book to library with API info by scanning it in (ehhhh only needed at first may be too much, can use sheets)
 2. ~~add a book to library with API info by typing in the ISBN~~
 3. view full library & filter it (add author here before calling this done)
