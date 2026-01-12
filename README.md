@@ -7,8 +7,9 @@ MY LIBRARY
 2. ~~add a book to library with API info by typing in the ISBN~~
 3. view full library & filter it (add author here before calling this done)
 4. search the full library
-5. ~~change a books details~~
-6. charts & figures tbd
+5. sort the full library
+6. ~~change a books details~~
+7. charts & figures tbd
    - total pages read
    - total books & per filters
    - average ratings per filters
