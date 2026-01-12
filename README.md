@@ -20,4 +20,6 @@ MY LIBRARY
 ## Notes & Reminders
 1. There is a < next to the fetch button.
 2. Look into subjects which are nested below categories in the API.
+3. You need a duplicate check.
+4. Want the ISBN showed somewhere once entered in case you want to refresh.
    
