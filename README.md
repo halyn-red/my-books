@@ -16,3 +16,8 @@ MY LIBRARY
    - genre heat map
 8. digital TBR you can drag and drop onto
 9. recommendations based on selection criteria tbd 
+
+## Notes & Reminders
+1. There is a < next to the fetch button.
+2. Look into subjects which are nested below categories in the API.
+   
