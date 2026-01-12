@@ -7,10 +7,10 @@ body {
     color: #213e31;               /* default text  */
 }
 
-/*header, this is my library */
+/*header, "this is my library", this is kind of unnecessary bur formats the HTML per convention because only one thing in header*/
 header { 
     text-align: center;           /* center all header content */
-    font-size: 50px;              /* base font size (unless you override it) */
+    font-size: 50px;              /* base font size (unless you override for each line) */
 }
 
 header h1 { /* this is MY LIBRARY and h1 is the only thing in header */
@@ -18,10 +18,10 @@ header h1 { /* this is MY LIBRARY and h1 is the only thing in header */
     font-size: 50px;             
     margin-top: 40px;             
     margin-bottom: 0px;          
-    line-height: 1;              
+    line-height: 1;          /* number is ratio to font size, keeps normal */     
 }
 
-header p { /* this doesn't exist so idk why it's here??? maybe old from before */
+header p { /* this doesn't exist so idk why it's here??? maybe old from before ??? why did you leave ???*/
     color: #213e31;               
     font-size: 36px;              
     margin-top: 0px;              
@@ -29,35 +29,35 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before *
 }
 
 /*--------FILTERS FRICKIN AROUND--------*/
-.filters{ /* this is like the row of filters */
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: flex-start;
-	width: 100%;
+.filters{ /* this is like the row of filters, all together */
+	display: flex; /* this comes up constantly it turns the elements into a container so you can move them horiz/vert, this puts on same row as the default flex selection */  
+	flex-wrap: nowrap; /* if they don't fit in one line, shrink them, to keep in same row */  
+	align-items: flex-start; /* align all items on the top of the continer */   
+	width: 100%; /* this means the filters container (row) takes up the whole width of it's parent, which is body */
 	margin-left: 20px;
-	clear: both;
+	clear: both; /* used to protect from floating elements overlapping, you don't really have those but to be safe per internet */
 	gap: 15px;
 }
 
-.filter-dropdown{ /* this is the dropdown itself and the button */
-height: 40px;
-padding: 10px 10px;             
-    	font-family: Courier New;       
+.filter-dropdown{ /* this is the dropdown itself and the button pressed */
+	height: 40px;
+	padding: 10px 10px;             
+    font-family: Courier New;       
 	font-size: 18px;                
-    	background-color: #213e31;      
-   	 color: white;                   
-   	 border: none;                   
-   	 border-radius: 8px;           
-   	 cursor: pointer;                
-   	 transition: background-color 0.2s, transform 0.2s; /* smooth hover, thanks chatgpt */
+    background-color: #213e31;      /* GREEN GREEN for copy & paste */
+   	color: white;                   
+    border: none;                   
+	border-radius: 8px;           
+   	cursor: pointer;                
+   	transition: background-color 0.2s, transform 0.2s; /* smooth hover, thanks chatgpt */
 }
 
-/* adding a new book button, it was scan at first but now it's new and too much to change */
+/* adding a new book button, it was scan at first but now it's new and too much to change the name so  */
 #scan-button, #save-book {
     display: block;                 
-    margin: 10px auto;              /* centered horizontally with top/bottom spacing */
-    padding: 10px 20px;             
-    font-family: Courier New;      
+    margin: 10px auto;              /* top/bottom 10px each, auto on the horizontal*/
+    padding: 10px 20px;             /* padding is the space inside of an element */
+    font-family: Courier New;      /*you probably don't need to repeat this 8000 times, same with most of below */
     font-size: 18px;                
     background-color: #213e31;     
     color: white;                   
@@ -82,7 +82,7 @@ padding: 10px 10px;
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
-/* you made the back button also the save button */
+/* you made the back button also the save button, but too much to adjust the name */
 #back-button {
     display: block;                 
 	margin-top: 15px;
@@ -101,7 +101,7 @@ padding: 10px 10px;
 /* this is the yes/no button on the book.html*/
 #book-read{
     display: block;                
-    	padding: 10px 20px;
+    padding: 10px 20px;
 	font-family: Courier New;       
     font-size: 18px;              
     background-color: #213e31;     
@@ -112,91 +112,85 @@ padding: 10px 10px;
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
-
-
-
+/* came from chat gpt for when you hoven on the buttons*/
 #scan-button:hover, #fetch-book:hover, #save-book:hover, #back-button:hover {
     background-color: #71ae94;       /* hover color */
     transform: scale(1.05);          /* slight enlarge on hover */
 }
 
-/* -------------------- Book list container -------------------- */
+/* this is the container that holds all the books as cards */
 #book-list {
-    display: flex;               /* arrange cards in a row */
-    flex-wrap: wrap;             /* wrap to next line if needed */
-    gap: 15px;                   /* space between cards, tighter for chic look */
+    display: flex;               /* put them in a row */
+    flex-wrap: wrap;             /* then wrap to next row */
+    gap: 15px;                   /* space between each of them */
     justify-content: center;     /* center cards horizontally */
-    padding: 10px;               /* small padding around list */
+    padding: 10px;               /* small padding around list and other elements (header, eventual elements) */
 }
 
-/* -------------------- Individual book cards -------------------- */
+/* this is each book, as a card */
 .book-card {
-    width: 150px;                /* fixed width */
-    height: 300px;
+    width: 150px;                /* fixed */
+    height: 300px;				/* fixed */
 	font-size: 10px;
-    text-align: center;          /* center content inside card */
+    text-align: center;          /* center anything in the card */
     background-color: white;     /* card background */
-    border: 1px solid #213e31;   /* card border */
-    border-radius: 10px;         /* slightly rounded corners */
+    border: 1px solid #213e31;   /* border details */
+    border-radius: 10px;         /* round the corners */
     padding: 5px;                /* inner spacing inside card */
-    cursor: pointer;             /* pointer on hover to indicate click */
-    transition: transform 0.2s;  /* smooth hover effect */
+    cursor: pointer;             /* pointer on hover to indicate click, this is so coooooooool */
+    transition: transform 0.2s;  /* smooth hover effect from chatgpt */
 }
 
 .book-card:hover {
-    transform: scale(1.05);      /* slight enlarge on hover */
+    transform: scale(1.05);      /* different than buttons with color & scale */
 }
 
-.book-card img {
+.book-card img {				 /* chatgpt handled the images i got stressed */
     width: 80px;                 /* book cover width */
     height: 120px;               /* book cover height */
-    object-fit: cover;           /* maintain aspect ratio and cover box */
-    margin-bottom: 5px;          /* space below image */
+    object-fit: cover;           /* maintains object ratio */
+    margin-bottom: 5px;          
 }
-
+/* the little x on the card to delete it on top left */
 .delete-book {
-    display: block;                 /* make button a block so margin auto works */
+    display: block;                 /* make button a block so margin auto works, different than flex, means items each vertical */
 	margin-top: 5px;
 	margin-left: 5px;    
-	padding: 5px 5px;             /* vertical and horizontal padding */
-    font-family: Courier New;       /* ensure button font matches page */
-    font-size: 12px;                /* button text size */
-    background-color: #213e31;      /* button color */
-    color: white;                   /* button text color */
-    border: none;                   /* remove default border */
-    border-radius: 8px;             /* rounded corners */
-    cursor: pointer;                /* cursor pointer */
-    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+	padding: 5px 5px;               
+    font-family: Courier New;       
+    font-size: 12px;                
+    background-color: #213e31;     
+    color: white;                   
+    border: none;                   /* there was a default */
+    border-radius: 8px;             
+    cursor: pointer;               
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover from chatgpt */
 }
 
-/* -------------------- Book details page -------------------- */
+/* this is the book.html that loads, the details */
 #book-details {
-display: flex;
+display: flex; 			/* gives more flexibility for columns*/
     gap: 20px;
     padding: 20px;
     font-family: Courier New;
 }
 
 #cover-column {
-    flex-shrink: 0;
+    flex-shrink: 0; 	/* cover won't shrink*/
 }
 
-
-
-#book-details img {
+#book-details img { 	
     width: 120px;
     height: 180px;
-    object-fit: cover;
+    object-fit: cover;	/* resize the pic but keep aspect ratio when putting in object*/
     border: 1px solid #213e31;
 }
 
-
-
 #fields-column {
     display: flex;
-    flex-direction: column;     /* fields go top → bottom */
-    gap: 12px;                  /* vertical spacing between rows */
-    flex: 1;                    /* take remaining horizontal space */
+    flex-direction: column;     /* top to bottom as a column, each field as a row (grouped as label & text) */
+    gap: 12px;                 
+    flex: 1;                    /* take up the whole width that's avaiable*/
 }
 
 .field-row {
@@ -205,14 +199,13 @@ display: flex;
     gap: 10px;
 }
 
-
 .field-row label {
 	white-space: no wrap;
 }
 
-.field-row input,
+.field-row input,				/*these are the same visually, different values in javascript, these apply to both */
 .field-row textarea {
-    flex: 1;                    /* fill remaining space */
+    flex: 1;                    
     padding: 6px;
     font-family: Courier New;
     font-size: 16px;
@@ -220,17 +213,16 @@ display: flex;
     border-radius: 5px;
 }
 
-.field-row textarea {
-    resize: vertical;           /* allow up/down resizing only */
+.field-row textarea {			/* then added things for label vs entry/text */
+    resize: vertical;           /* allow up/down resizing only, this was needed for some reason when issue arose */
 }
-
 
 #book-details label {
     font-size: 24px;
     color: #213e31;
 }
 
-/* Make inputs full width with padding */
+/* regardless of the input type or what's in the text area */
 #book-details input[type="text"],
 #book-details input[type="date"],
 #book-details input[type="number"],
@@ -241,23 +233,23 @@ display: flex;
     font-size: 16px;
     border: 1px solid #213e31;
     border-radius: 5px;
-    box-sizing: border-box;
+    box-sizing: border-box; 		/* came up for the overflow of text i think it means width includes border px */
 }
 
-/* -------------------- Star rating -------------------- */
-#star-rating span {
+/* stars */
+#star-rating span { /* all span elements within star-rating, which is all stars */
     font-size: 75px;
-    color: #213e31;              /* default gray */
+    color: #213e31;              /* default gray before any clicks */
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.2s;			/* chat gpt added this */
 }
 
 #star-rating span.filled {
-    color: gold;              /* filled stars, does nothing */
+    color: gold;              /* this frankly doesn't work????? unsure why but alas */
 }
 
-/* -------------------- Responsive tweaks -------------------- */
-@media (max-width: 600px) {
+/* i am trying to make author text wrap and put a ... but you're failing */
+@media (max-width: 600px) { 
     #book-details {
         flex-direction: column;
         align-items: center;
