@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+ 
+    <!--head is the metadata, title here is what's in the url visually-->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book Details</title>
+<!-- links your CSS file, needs to be in same folder-->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Back button -->
+<!-- back button at very top -->
 <button id="back-button" type="button">← back</button>
 
 <header>
@@ -16,70 +19,75 @@
 </header>
 
 <div id="book-details">
-
-    <!-- LEFT COLUMN: COVER ONLY -->
+    <!-- this defines the left "column" of what's under the header, which just has the cover. pull from source or show -->
     <div id="cover-column">
-        <img id="book-cover"
+        <img id="book-cover" 
              src="https://via.placeholder.com/120x180?text=Cover"
              alt="Book Cover">
     </div>
 
-    <!-- RIGHT COLUMN: ALL FIELDS -->
+    <!-- the right column is all the other fields besides the image under the header-->
     <div id="fields-column">
+        <!-- html reminders: 
+        class is a group of elements, in CSS it's .className
+        id is a single item (maybe also in a class), in CSS it's #theID ---!>
 
-        <!-- ISBN -->
-        <div class="field-row isbn-row">
-            <label for="book-isbn">ISBN:</label>
-            <input id="book-isbn" type="text" placeholder="Enter ISBN">
-            <button id="fetch-book" type="button">Get Info</button>
+        
+        <!---- isbn -->
+        <div class="field-row isbn-row">  <!---- the div here groups the label, input and button for the isbn together -->
+            <label for="book-isbn">ISBN:</label>  <!---- label for the element, so label + entry are one element-->
+            <input id="book-isbn" type="text" placeholder="Enter ISBN"> <!-- show an enter if nothing yet-->
+            <button id="fetch-book" type="button">Get Info</button> <
         </div>
 
-        <!-- Title -->
+        <!-- title, all will have label & input in the same element because of <div placement -->
         <div class="field-row">
             <label for="book-title">title:</label>
             <input id="book-title" type="text">
         </div>
 
-        <!-- Author -->
+        <!-- author (s) -->
         <div class="field-row">
             <label for="book-author">author:</label>
             <input id="book-author" type="text">
         </div>
 
-        <!-- Published -->
+        <!-- date published -->
         <div class="field-row">
             <label for="book-published">published:</label>
             <input id="book-published" type="text">
         </div>
 
-        <!-- Pages -->
+        <!-- # pages -->
         <div class="field-row">
             <label for="book-pages">pages:</label>
             <input id="book-pages" type="number">
         </div>
 
-        <!-- Genre -->
+        <!-- genre (s)  -->
         <div class="field-row">
             <label for="book-genre">genre(s):</label>
-            <input id="book-genre" type="text">
+            <input id="book-genre" type="text"> 
         </div>
 
-        <!-- Description -->
+        <!-- description  -->
         <div class="field-row">
-            <label>description:</label>
-            <textarea id="book-description" rows="4"></textarea>
+            <label for= "book-description">description:</label> <!-- you added this for recently  -->
+            <textarea id="book-description" rows="4"></textarea> <!-- textarea for >1 line, input is good for one line  -->
         </div>
 
-        <!-- Read toggle -->
+        <!-- yes/no for reading toggle -->
         <div class="field-row">
             <label>have you read?</label>
-            <button id="book-read" type="button" data-value="No">No</button>
+            <button id="book-read" type="button" data-value="No">No</button> <!-- default value & text to no-->
         </div>
 
-        <!-- Star rating -->
+        <!-- rating -->
         <div class="field-row">
             <label>rating:</label>
             <div id="star-rating">
+                <!-- yes/no for reading toggle -->
+                <!-- first star applies to the data value one, second to two etc. -->
                 <span data-value="1">☆</span>
                 <span data-value="2">☆</span>
                 <span data-value="3">☆</span>
@@ -88,14 +96,12 @@
             </div>
         </div>
 
-        <!-- Comments -->
+        <!-- comments -->
         <div class="field-row">
             <label>your comments:</label>
             <textarea id="book-comments" rows="4"></textarea>
         </div>
 
-        <!-- Save --!>
-        <!--- <button id="save-book" type="button">Save Changes</button> ---!>
 
     </div>
 </div>
