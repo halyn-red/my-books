@@ -28,6 +28,27 @@ library.forEach(book => {
     }
 });
 
+function displayChildCount() {
+  // Get the parent element you want to count children from
+  const parentElement = document.getElementById('book-list'); // e.g., <div id="myParent">
+
+  // Get the count of direct child elements
+  const count = parentElement.childElementCount; // or parentElement.children.length
+
+  // Find an element to display the count in (e.g., <span id="countDisplay"></span>)
+  const displayElement = document.getElementById('resultNum');
+
+  // Update the display element's text with the count
+  if (displayElement) {
+	displayElement.textContent = count;
+    //displayElement.textContent= `This element has ${count} child elements.`;
+  }
+}
+
+// Call the function when the page loads or an event happens
+
+
+
 //---this is the filters section
 const filters = { // define what the filters are
 	read: "all",
@@ -50,7 +71,7 @@ function applyFilters() {
         const authorValue = book.author ?? "No Author";      // doesn't exist yet
 
         // --- Read/Unread Filter ---
-		// filters.read is the filter selection, rest is filter + selection combo (true/false confusing, defaults false)
+	// filters.read is the filter selection, rest is filter + selection combo (true/false confusing, defaults false)
         if (filters.read === "read" && !readStatus) return false;
         if (filters.read === "unread" && readStatus) return false;
         // --- Genre Filter ---
@@ -62,11 +83,15 @@ function applyFilters() {
 		if (filters.author !== "all" && authorValue !== filters.author) return false;
 
         // If the book passes all active filters, keep it in filtered
+
         return true;
     });
 
     // --- Render/show the filtered books ---
     renderLibrary(filtered);
+    displayChildCount()
+
+	
 }
  
 //populate genre dropdown
