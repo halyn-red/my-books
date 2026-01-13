@@ -4,6 +4,7 @@ const scanButton = document.getElementById("scan-button");
 const clearFiltersButton = document.getElementById("clear-filters"); // clear-filters is the ID in the html
 const readFilter = document.getElementById("read-filter");// current selected value in the dropdown
 const genreFilter = document.getElementById("genre-filter");
+const authorFilter = document.getElementById("author-filter");
 
 // --- library comes from local storage which is confusing to me
 let library = JSON.parse(localStorage.getItem("myLibrary")) || [];
@@ -18,12 +19,20 @@ library.forEach(book => {
     if (!book.genre || book.genre.trim() === "") {
         book.genre = "Uncategorized";       // default or when you leave itblank
     }
+// copying genre for author
+    if (Array.isArray(book.author)) {
+        book.author = book.author.join(", ");  // convert array to string
+    }
+    if (!book.author || book.author.trim() === "") {
+        book.author = "No Author";       // default or when you leave itblank
+    }
 });
 
 //---this is the filters section
 const filters = { // define what the filters are
 	read: "all",
-	genre: "all"
+	genre: "all",
+	author: "all"
 };
 /**
  * For a new filter:
@@ -34,11 +43,11 @@ const filters = { // define what the filters are
 function applyFilters() {
     // Go through library and filter based on active filters, return filtered list
     const filtered = library.filter(book => {
-        // Use these variables to avoid undefined issues (start with something sonothing blank)
+        // Use these variables to avoid undefined issues (start with something somothing blank)
         const readStatus = book.read ?? false;      // default unread
         const genreValue = book.genre ?? "Uncategorized";        // default uncategorized
         const ratingValue = book.rating ?? 0;       // doesn't exist yet
-        const authorValue = book.author ?? "";      // doesn't exist yet
+        const authorValue = book.author ?? "No Author";      // doesn't exist yet
 
         // --- Read/Unread Filter ---
 		// filters.read is the filter selection, rest is filter + selection combo (true/false confusing, defaults false)
@@ -48,7 +57,9 @@ function applyFilters() {
         // filters.genre can be: "all" or any string matching book.genre
         if (filters.genre !== "all" && genreValue !== filters.genre) return false;
         // if (filters.ratingMin && ratingValue < filters.ratingMin) return false;
-        // if (filters.author !== "all" && authorValue !== filters.author) return false;
+
+	//---Author Filter---
+		if (filters.author !== "all" && authorValue !== filters.author) return false;
 
         // If the book passes all active filters, keep it in filtered
         return true;
@@ -72,6 +83,24 @@ function populateGenreFilter() {
             option.value = g;  // the value of the option is the genre
             option.textContent = g; // show the genre name in the dropdown, the visible text
             genreFilter.appendChild(option); // add the option to the list of options this function makes & shows
+        }
+    });
+}
+
+// POPULATE AUTHOR DROPDOWN
+function populateAuthorFilter() {
+	// this makes it all of them and "all author" at the top when you refresh/start
+    authorFilter.innerHTML = `<option value="all">all authors</option>`;
+    // these are the authors that exist as a set
+	// for each book, get the genre and put them in a new set (to be dropdown options), b is book in the library
+	const authors = new Set(library.map(bb => bb.author)); // sets only keep unique values by default
+	// add each one as an option
+    authors.forEach(a => { // for each author you loop through 
+        if (a && a.trim() !== "") { // skip it if empty, because there wre issues
+            const option = document.createElement("option"); //add it as an option element which is a dropdown choice/selection
+            option.value = a;  // the value of the option is the genre
+            option.textContent = a; // show the genre name in the dropdown, the visible text
+            authorFilter.appendChild(option); // add the option to the list of options this function makes & shows
         }
     });
 }
@@ -115,7 +144,7 @@ function addNewBook() { // what happens when you press new book button
     const newBook = { // this is what a new book is
         id: Date.now(), // makes the IDs unique so it's not numbered anymore
         title: "New Book",
-        author: "",
+        author: "No Author",
         cover: "https://via.placeholder.com/100x150?text=Cover", // chatgpt did this image stuff idk
 	    genre: "Uncategorized", // because issues with filtering before
  	    read: false, // because issues with filtering before
@@ -131,6 +160,7 @@ function addNewBook() { // what happens when you press new book button
 
 	// --- populate genres after adding new book ---
 	populateGenreFilter();    // reload the new genre options
+	populateAuthorFilter();
 	applyFilters(); // apply any filters
 }
 
@@ -144,17 +174,24 @@ genreFilter.addEventListener("change", () => { // when the genre selection chang
     filters.genre = genreFilter.value; // set it as the dropdown selection
     applyFilters(); // apply filters
 });
+authorFilter.addEventListener("change", () => { // when author selection changes
+    filters.author = authorFilter.value; // set it as the dropdown selection
+    applyFilters(); // apply filters
+});
 clearFiltersButton.addEventListener("click", () => { // when clicked
     // Reset filter object (filtered = all)
     filters.read = "all";
     filters.genre = "all";
+	filters.author = "all";
     // Reset dropdowns visually (to designated text values, defined in filters themselves the innherhtml)
     readFilter.value = "all";
     genreFilter.value = "all";
+	authorFilter.value = "all";
     // Reapply filters, which is all
     applyFilters();
 });
 
 // every time you reload, pull the genres and apply the filters 
 populateGenreFilter();
+populateAuthorFilter();
 applyFilters();
