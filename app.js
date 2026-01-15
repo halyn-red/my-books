@@ -5,9 +5,73 @@ const clearFiltersButton = document.getElementById("clear-filters"); // clear-fi
 const readFilter = document.getElementById("read-filter");// current selected value in the dropdown
 const genreFilter = document.getElementById("genre-filter");
 const authorFilter = document.getElementById("author-filter");
+const titleList = document.getElementById("title-list");
 
 // --- library comes from local storage which is confusing to me
 let library = JSON.parse(localStorage.getItem("myLibrary")) || [];
+
+
+// the disaster below is the search...
+function messing() {
+// pull in the input
+	const input = document.getElementById("search-input");
+// change them to all upper case, easier to compare
+	const filter = input.value.toUpperCase();
+// create a list of unique titles in the library
+	const titles = new Set(library.map(t => t.title)); 
+//console.log(titles); // this comes out as a set
+// get the container (HTML) where this list is going to go 
+	const listContainer = document.getElementById("title-list");
+//console.log(listContainer)
+//clear list before adding new items (since re-running constantly)
+	listContainer.innerHTML = ''; 
+	
+// function goes through titles and creates a list item (li) and puts it in the listContainer, adding it to the DOM
+// the list container is a ul element type so it's friendly with the html item
+	titles.forEach(item => {
+   		const li = document.createElement("li"); // new list item element
+      	li.textContent = item; // set the text content
+      	listContainer.appendChild(li); // Append the li to the ul
+		});
+	
+// Re-selects list items after they've been added to DOM
+	const liElements = listContainer.getElementsByTagName("li");
+	
+	
+// Start at i=0, run it once for each <li>, stop when i reaches the number of <li> elements (you've gone through them all)
+	for (let i = 0; i < liElements.length; i++) { 
+  		const txtValue = liElements[i].textContent; // Check the textContent directly from the li element, liElements[I] = one specific <li>
+	  	if (txtValue.toUpperCase().indexOf(filter) > -1) { // Looks in filter for item, if found, return position otherwise return -1
+		liElements[i].style.display = ""; // if it matches, make it visible
+   	 	} else {
+	 	liElements[i].style.display = "none"; // if it's not in the "filter" list, hide it
+		// now the cards		
+		//library.forEach(book => {
+		//	console.log(book.title);
+		//	if (book.title == txtValue) {
+		//	document.getElementById("book-card").style.display = 'none';
+		//}
+
+			//});
+
+	console.log(titles)
+	console.log(listContainer); // this returns the html element
+	console.log(titles); // this is a set
+	console.log(bookList);
+	console.log(library);
+}}}
+	
+
+//
+
+
+
+
+	
+
+
+
+
 
 // make sure all books have read property because issues with blanks
 library.forEach(book => {
@@ -28,6 +92,7 @@ library.forEach(book => {
     }
 });
 
+// YEE HAW WHY WAS THIS SO HARD??? This is the result #
 function displayChildCount() {
   // Get the parent element you want to count children from
   const parentElement = document.getElementById('book-list'); // e.g., <div id="myParent">
@@ -41,7 +106,6 @@ function displayChildCount() {
   // Update the display element's text with the count
   if (displayElement) {
 	displayElement.textContent = count;
-    //displayElement.textContent= `This element has ${count} child elements.`;
   }
 }
 
@@ -63,7 +127,7 @@ const filters = { // define what the filters are
  */
 function applyFilters() {
     // Go through library and filter based on active filters, return filtered list
-    const filtered = library.filter(book => {
+    	const filtered = library.filter(book => {
         // Use these variables to avoid undefined issues (start with something somothing blank)
         const readStatus = book.read ?? false;      // default unread
         const genreValue = book.genre ?? "Uncategorized";        // default uncategorized
@@ -184,6 +248,7 @@ function addNewBook() { // what happens when you press new book button
     localStorage.setItem("myLibrary", JSON.stringify(library)); // put it in local storage so its there between reloads
 
 	// --- populate genres after adding new book ---
+	messing();
 	populateGenreFilter();    // reload the new genre options
 	populateAuthorFilter();
 	applyFilters(); // apply any filters
@@ -217,6 +282,7 @@ clearFiltersButton.addEventListener("click", () => { // when clicked
 });
 
 // every time you reload, pull the genres and apply the filters 
+messing();
 populateGenreFilter();
 populateAuthorFilter();
 applyFilters();
