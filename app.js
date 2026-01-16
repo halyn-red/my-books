@@ -59,7 +59,19 @@ function messing() {
 	console.log(titles); // this is a set
 	console.log(bookList);
 	console.log(library);
-}}}
+}}
+	// hide the book cards
+	const search = input.value.toUpperCase();
+	// grab all cards, which are divs with clas = book-card
+	const cards = document.querySelectorAll(".book-card");
+	// for each one
+	cards.forEach(card => {
+		// grab the title from the h2 of THAT card (this is defined within what a card is in html, look in dev console
+		const title = card.querySelector("h2").textContent.toUpperCase();
+		// if the title contains the search string, show the card. otherwise, hide.
+		card.style.display = title.includes(search) ? "" : "none";
+	});
+}
 	
 
 //
@@ -99,7 +111,6 @@ function displayChildCount() {
 
   // Get the count of direct child elements
   const count = parentElement.childElementCount; // or parentElement.children.length
-
   // Find an element to display the count in (e.g., <span id="countDisplay"></span>)
   const displayElement = document.getElementById('resultNum');
 
