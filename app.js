@@ -275,7 +275,20 @@ clearFiltersButton.addEventListener("click", () => { // when clicked
     applyFilters();
 });
 
+// this creates the listener, isn't actually clicking. means when it renders library, if you click, this happens:
+function messing() {
+	const messing = document.getElementById("messing");
+	messing.addEventListener("click", (e) => { 
+         window.location.href = "messing.html"; //take us to book
+        });
+}
 // every time you reload, pull the genres and apply the filters 
+
+	const genres = new Set(library.map(b => b.genre)); // sets only keep unique values by default
+
+	console.log(genres);
+
+messing();
 search();
 populateGenreFilter();
 populateAuthorFilter();
