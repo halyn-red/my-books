@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Library test</title>
+<title>My Library</title>
 <link rel="stylesheet" href="style.css">
 <head>
 <body>
@@ -14,14 +14,15 @@
 
 <button id="scan-button">+ add book</button>
 
-<input type="text" id="search-input" onkeyup="search()" placeholder="..." </input>
-<ul id="title-list">
+<input class="search-bar" type="text" id="search-input" onkeyup="search()" placeholder="search titles..." </input>
+<ul 
+class="hide-completely" id="title-list">
 </ul>
 
 <div class="filters">
 
 <div class="resultNumLabel">
-  Results: <span id="resultNum"></span>
+  Filter Results: <span id="resultNum"></span>
 </div>
 	
 <button id="clear-filters" class="filter-dropdown">clear</button>
@@ -53,3 +54,4 @@
 <head>
 </body>
 </html>
+
