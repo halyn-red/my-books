@@ -10,18 +10,6 @@ const titleList = document.getElementById("title-list");
 // --- library comes from local storage which is confusing to me
 let library = JSON.parse(localStorage.getItem("myLibrary")) || [];
 
-
-
-
-
-
-
-	
-
-
-
-
-
 // make sure all books have read property because issues with blanks
 library.forEach(book => {
     if (typeof book.read !== "boolean") book.read = false;
