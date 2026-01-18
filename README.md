@@ -34,7 +34,7 @@ MY LIBRARY
 - Pre Jan 10th tracking: library loads, add book button adds a card to the front, card populated with what I want, click on card to open details, can search API via ISBN, can edit details and save, back button, save button, can set star rating, can change yes/no button on read, library saved upon reload of page (local storage), UI very clean & pretty
 - January 10th: filter for read/not and genre (including user-added) and a clear  filters button, merged the save button into the back button
 - January 11th: (admin day) annotated all the code & set up the github framework better for future-proofing
-- January 18th: got the search working (card hiding)
+- January 18th: got the search working (card hiding), started working on tables. got data present for genre & author counts
 
 ## Documentation
 - Make a file map & diagrams
