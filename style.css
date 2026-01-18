@@ -38,6 +38,7 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before ?
 	margin-top: 20px;
 	clear: both; /* used to protect from floating elements overlapping, you don't really have those but to be safe per internet */
 	gap: 15px;
+	margin-bottom: 10px;
 }
 
 
