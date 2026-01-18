@@ -66,6 +66,29 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before ?
 	border-radius: 8px; 
 	margin-left: 20px;
 	font-weight: 700;
+	height: 20px;
+}
+
+.search-bar{
+	padding: 10px 10px;             
+   	font-family: Courier New;       
+	font-size: 18px;                
+   	background-color: #213e31;      /* GREEN GREEN for copy & paste */
+   	color: white;        
+	text-color: white;           
+    	border: none;                   
+	border-radius: 8px; 
+	margin-left: 20px;
+	height: 20px;
+}
+
+::placeholder {
+  color: #989a9a; /* Sets the placeholder text color to red */
+  Font-style: italic;
+}
+
+.hide-completely{
+	display: none;
 }
 
 
