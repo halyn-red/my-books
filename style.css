@@ -64,7 +64,8 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before ?
    	color: white;                   
     border: none;                   
 	border-radius: 8px; 
-margin-left: auto;
+margin-left: 40px;
+width: 200px;
 }
 
 
