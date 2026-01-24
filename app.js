@@ -6,6 +6,8 @@ const readFilter = document.getElementById("read-filter");// current selected va
 const genreFilter = document.getElementById("genre-filter");
 const authorFilter = document.getElementById("author-filter");
 const titleList = document.getElementById("title-list");
+const tbrButton = document.getElementById("tbr-button");
+
 
 // --- library comes from local storage which is confusing to me
 let library = JSON.parse(localStorage.getItem("myLibrary")) || [];
@@ -275,20 +277,27 @@ clearFiltersButton.addEventListener("click", () => { // when clicked
     applyFilters();
 });
 
+
+tbrButton.addEventListener("click", () =>{ 
+	window.location.href= "tbr.html";
+});
+
 // this creates the listener, isn't actually clicking. means when it renders library, if you click, this happens:
-function messing() {
-	const messing = document.getElementById("messing");
-	messing.addEventListener("click", (e) => { 
-         window.location.href = "messing.html"; //take us to book
+function stats() {
+	const stats = document.getElementById("stat-button");
+	stats.addEventListener("click", (e) => { 
+         window.location.href = "stats.html"; //take us to stats
         });
 }
 // every time you reload, pull the genres and apply the filters 
 
-	const genres = new Set(library.map(b => b.genre)); // sets only keep unique values by default
+const genres = new Set(library.map(b => b.genre)); // sets only keep unique values by default
 
-	console.log(genres);
+console.log(genres);
 
-messing();
+
+
+stats();
 search();
 populateGenreFilter();
 populateAuthorFilter();
