@@ -29,6 +29,13 @@ function genreTable() {
 });
 }
 
+const backButton = document.getElementById("back-button");
+
+backButton.addEventListener("click", () => {        
+	window.location.href="index.html";        
+    });
+
+
 
 function authorTable() {
     const tableBody = document.getElementById('table-author');
