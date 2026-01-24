@@ -107,6 +107,23 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before ?
     transition: background-color 0.2s, transform 0.2s; /* smooth hover */
 }
 
+
+#stat-button, #tbr-button {
+    display: block;                 
+    padding: 10px 10px;             /* padding is the space inside of an element */
+    font-family: Courier New;      
+	font-size: 14px;                
+    background-color: #213e31;     
+    color: white;                   
+    border: none;                   
+    border-radius: 8px;             
+    cursor: pointer;              
+    transition: background-color 0.2s, transform 0.2s; /* smooth hover */
+}
+
+
+
+
 /* this is "get info" now */
 #fetch-book {
     display: block;                 
@@ -153,7 +170,7 @@ header p { /* this doesn't exist so idk why it's here??? maybe old from before ?
 }
 
 /* came from chat gpt for when you hoven on the buttons*/
-#scan-button:hover, #fetch-book:hover, #save-book:hover, #back-button:hover {
+#tbr-button:hover, #stat-button:hover, #scan-button:hover, #fetch-book:hover, #save-book:hover, #back-button:hover {
     background-color: #71ae94;       /* hover color */
     transform: scale(1.05);          /* slight enlarge on hover */
 }
@@ -302,3 +319,81 @@ display: flex; 			/* gives more flexibility for columns*/
         height: 90px;
     }
 }
+
+#styled-details
+{
+	color:blue;
+}
+
+/* now doing the tables */
+/* DETAILS container */
+details.styled-details {
+  width: 50%;
+  margin-left: 20px;
+	padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #fafafa;
+  Margin-top: 20px;
+}
+
+/* Summary header */
+  details.styled-details > summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+
+/* Table styling */
+table.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
+table.styled-table th,
+table.styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table.styled-table th {
+  background: #eee;
+}
+
+
+.button-row{ /* this is like the row of stats & tar buttons */
+	display: flex; /* this comes up constantly it turns the elements into a container so you can move them horiz/vert, this puts on same row as the default flex selection */  
+	flex-wrap: nowrap; /* if they don't fit in one line, shrink them, to keep in same row */  
+	align-items: center; /* align all items on the top of the continer */   
+	justify-content: center;
+	width: 100%; 
+	margin-top: 10px;
+	clear: both; /* used to protect from floating elements overlapping, you don't really have those but to be safe per internet */
+	gap: 15px;
+	margin-bottom: 10px;
+}
+
+.tbr-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.tbr-slot {
+  padding: 10px;
+}
+
+.book {
+  background: #f4f1ec;
+  border-left: 8px solid #213e31;
+  border-radius: 4px 8px 8px 4px;
+  padding: 12px;
+  min-height: 200px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,.15);
+}
+
+
+
